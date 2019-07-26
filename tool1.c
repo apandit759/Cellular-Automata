@@ -224,7 +224,7 @@ void main ()
 			max=basins[i]->basin_size;
 		else if(basins[i]->basin_size<min)
 			min=basins[i]->basin_size;		
-    }
+	}
 			
 	for(i=0;i<basin_count;i+=1)
 	{
@@ -233,33 +233,33 @@ void main ()
 		basins[i]->loop_size=loop_finder(basins[i]->nodes_in_basin,basins[i]->basin_size,basins[i]->nodes_in_loop,next_states);
 	}
 
-	printf("\nBiggest basin size : %d Smallest basin size : %d",max,min); 		 		
+	printf("\nBiggest basin size : %d\nSmallest basin size : %d",max,min); 		 		
 	  
 	printf("\nNo. of basins = %d\n",basin_count);
 	
 	printf("\nNo. of self loop states are : %d\n",self_loop_counter(next_states,noOfPosStates));
 
 	int *nrs;
-    nrs=(int*)malloc(sizeof(int));
-    nrs[0]=-1;
-    int k=0;
-    for(i=0;i<noOfPosStates;i+=1)
-    {
-       	int flag=1;
-       	for(int j=0;j<noOfPosStates;j+=1)
-       	{
-       		if(i==next_states[j])
-       		{
-       			flag=0;
-       			break;
-       		}
-       	}
-       	if(flag==1)
-       	{
-       		appender(nrs,k,i);
-       		k+=1;
-       	}
-    }
+	nrs=(int*)malloc(sizeof(int));
+	nrs[0]=-1;
+	int k=0;
+	for(i=0;i<noOfPosStates;i+=1)
+	{
+		int flag=1;
+		for(int j=0;j<noOfPosStates;j+=1)
+		{
+			if(i==next_states[j])
+			{
+				flag=0;
+				break;
+			}
+		}
+		if(flag==1)
+		{
+			appender(nrs,k,i);
+			k+=1;
+		}
+	}
 	if(k!=0)
 	{
 		printf("NRSs are : ");
