@@ -2,6 +2,7 @@
 #include<stdlib.h>
 #include<math.h>
 #include<string.h>
+#include "input.c"
 struct node
 {
 	int val;
@@ -193,12 +194,12 @@ void main ()
 	Rule_matrix=(int**)calloc(size,sizeof(int*));
 	for(i=0;i<size;i++)
 		Rule_matrix[i]=(int*)calloc(8,sizeof(int));
-	printf("Enter the rule vector : ");
+	input_maker(Rule_vector,size);//input function being called
+	printf("The rule vector is : ");
+	for(i=0;i<size;i+=1)
+		printf("%d ",Rule_vector[i]);
 	for(i=0;i<size;i+=1) //constructing the rule matrix
-	{
-		scanf("%d",&Rule_vector[i]);
 		dec_to_bin(Rule_vector[i],Rule_matrix[i],8);
-	}
 	free(Rule_vector);//freeing rule vector
 	next_states_maker(next_states,flagOfStates,Rule_matrix,noOfPosStates,size);
 	for(i=0;i<size;i+=1)//freeing rule matrix since no use
